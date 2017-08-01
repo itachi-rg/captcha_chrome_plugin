@@ -1,21 +1,9 @@
-var some = $(".captcha img").attr('src');
-alert(some);
-var encoded = encodeURIComponent(some);
+var captcha_str = $(".captcha img").attr('src');
+var encoded_str = encodeURIComponent(captcha_str);
 
-// https://10.216.55.119:80/?arg=hello open this site manually in the browser and add it to trusted sites
-uri = "https://10.216.55.119:80/?arg=" + encoded;
+// https://10.216.55.119:80/predict?captchaString=hello open this site manually in the browser and add it to trusted sites
+uri = "https://10.216.55.119:80/predict?captchaString=" + encoded_str;
 $.get(uri, function( data ) {
-  //$( ".result" ).html( data );
-  alert(data);
-  alert( "Load was performed." );
+  //alert(data);
+  $("#drcaptcha").val(data)
 });
-
-/*
-$(".captcha img").each(function(k,v) {
-    //If all you want is the src of the image, no need to make it into a jQuery object.
-    var src = v.src; //Get the source.
-    //Do something with it.
-	alert(src);
-});
-
-*/
