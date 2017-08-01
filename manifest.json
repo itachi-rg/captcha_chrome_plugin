@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+
+  "name": "UMass captcha plugin",
+  "description": "This extension extracts and fills captcha for UMass CS Email site",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ],
+  "content_scripts": [
+	{
+		"matches": [
+		  "https://mailsrv.cs.umass.edu/webmail/*"
+		],
+		"js": ["jquery-3.2.1.min.js", "content.js"]
+	}
+  ],
+  "background": {
+	"scripts": ["background.js"],
+	"persistent": false
+  }
+}
